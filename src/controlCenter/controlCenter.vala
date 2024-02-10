@@ -436,6 +436,10 @@ namespace SwayNotificationCenter {
                     var noti = (Notification) w;
                     if (noti != null) noti.set_time ();
                 }
+                this.get_style_context ().add_class ("open");
+            }
+            else {
+                this.get_style_context ().remove_class ("open");
             }
             swaync_daemon.subscribe_v2 (notification_count (),
                                      noti_daemon.dnd,
