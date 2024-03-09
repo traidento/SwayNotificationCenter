@@ -64,12 +64,12 @@
                                             <property name="visible">True</property>
                                             <property name="can-focus">False</property>
                                             <property name="halign">center</property>
-                                            <property name="valign">center</property>
+                                            <property name="valign">start</property>
                                             <child>
                                               <object class="GtkImage" id="img">
                                                 <property name="visible">True</property>
                                                 <property name="can-focus">False</property>
-                                                <property name="valign">center</property>
+                                                <property name="valign">start</property>
                                                 <property name="icon_size">6</property>
                                                 <style>
                                                   <class name="image"/>
@@ -94,7 +94,7 @@
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>
-                                            <property name="fill">True</property>
+                                            <property name="fill">False</property>
                                             <property name="position">0</property>
                                           </packing>
                                         </child>
@@ -129,10 +129,52 @@
                                                   </packing>
                                                 </child>
                                                 <child>
+                                                  <object class="GtkRevealer" id="close_revealer">
+                                                    <property name="visible">True</property>
+                                                    <property name="can-focus">False</property>
+                                                    <property name="halign">end</property>
+                                                    <property name="valign">start</property>
+                                                    <property name="transition-type">slide-left</property>
+                                                    <child>
+                                                      <object class="GtkButton" id="close_button">
+                                                        <property name="visible">True</property>
+                                                        <property name="can-focus">True</property>
+                                                        <property name="receives-default">False</property>
+                                                        <property name="halign">center</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="margin-left">4</property>
+                                                        <property name="margin-right">4</property>
+                                                        <property name="margin-start">4</property>
+                                                        <property name="margin-end">4</property>
+                                                        <property name="margin-top">2</property>
+                                                        <property name="margin-bottom">2</property>
+                                                        <property name="relief">none</property>
+                                                        <child>
+                                                          <object class="GtkImage">
+                                                            <property name="visible">True</property>
+                                                            <property name="can-focus">False</property>
+                                                            <property name="icon-name">window-close-symbolic</property>
+                                                          </object>
+                                                        </child>
+                                                        <style>
+                                                          <class name="close-button"/>
+                                                          <class name="circular"/>
+                                                        </style>
+                                                      </object>
+                                                    </child>
+                                                  </object>
+                                                  <packing>
+                                                    <property name="expand">False</property>
+                                                    <property name="fill">True</property>
+                                                    <property name="pack-type">end</property>
+                                                    <property name="position">1</property>
+                                                  </packing>
+                                                </child>
+                                                <child>
                                                   <object class="GtkLabel" id="time">
                                                     <property name="visible">True</property>
                                                     <property name="can-focus">False</property>
-                                                    <property name="valign">start</property>
+                                                    <property name="valign">baseline</property>
                                                     <property name="margin-start">6</property>
                                                     <property name="track-visited-links">False</property>
                                                     <style>
@@ -143,7 +185,7 @@
                                                     <property name="expand">False</property>
                                                     <property name="fill">True</property>
                                                     <property name="pack-type">end</property>
-                                                    <property name="position">1</property>
+                                                    <property name="position">2</property>
                                                   </packing>
                                                 </child>
                                               </object>
@@ -281,40 +323,6 @@
                           <packing>
                             <property name="index">-1</property>
                           </packing>
-                        </child>
-                        <child type="overlay">
-                          <object class="GtkRevealer" id="close_revealer">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="halign">end</property>
-                            <property name="valign">start</property>
-                            <property name="transition-type">crossfade</property>
-                            <child>
-                              <object class="GtkButton" id="close_button">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="receives-default">False</property>
-                                <property name="halign">center</property>
-                                <property name="valign">center</property>
-                                <property name="margin-start">4</property>
-                                <property name="margin-end">4</property>
-                                <property name="margin-top">2</property>
-                                <property name="margin-bottom">2</property>
-                                <property name="relief">none</property>
-                                <child>
-                                  <object class="GtkImage">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="icon-name">window-close-symbolic</property>
-                                  </object>
-                                </child>
-                                <style>
-                                  <class name="close-button"/>
-                                  <class name="circular"/>
-                                </style>
-                              </object>
-                            </child>
-                          </object>
                         </child>
                       </object>
                       <packing>
