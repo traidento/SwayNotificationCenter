@@ -35,8 +35,6 @@ namespace SwayNotificationCenter {
         [GtkChild]
         unowned Gtk.Label summary;
         [GtkChild]
-        unowned Gtk.Label time;
-        [GtkChild]
         unowned Gtk.Label body;
         [GtkChild]
         unowned Gtk.Image img;
@@ -587,11 +585,17 @@ namespace SwayNotificationCenter {
         }
 
         public void set_time () {
+            Pango.AttrList ? attr = null;
+            string ? buf = null;
+
             if (ConfigModel.instance.relative_timestamps) {
-                this.time.set_text (get_relative_time ());
+                Pango.parse_markup ((param.summary ?? param.app_name) + get_relative_time (), -1, 0, out attr, out buf, null);
             } else {
-                this.time.set_text (get_iso8601_time ());
+                Pango.parse_markup ((param.summary ?? param.app_name) + get_iso8601_time (), -1, 0, out attr, out buf, null);
             }
+
+            this.summary.set_text (buf);
+            if (attr != null) this.summary.set_attributes (attr);
         }
 
         private string get_relative_time () {
@@ -622,12 +626,12 @@ namespace SwayNotificationCenter {
                 if (val > 1) value += "s";
                 value += " ago";
             }
-            return value;
+            return "<span foreground='#e5e9f087'> · " + value + "</span>";
         }
 
         private string get_iso8601_time () {
             var dtime = new DateTime.from_unix_local (param.time);
-            return dtime.format_iso8601 ();
+            return "<span foreground='#e5e9f087'> · " + dtime.format_iso8601 () + "</span>";
         }
 
         public void close_notification (bool is_timeout = false) {
