@@ -440,7 +440,7 @@
                 "default": ""
               },
               "active": {
-                  "type": "bool",
+                  "type": "boolean",
                   "description": "Wether the toggle button is active as default or not",
                   "default": false
               }
